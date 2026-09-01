@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Falcon Mechatronics 5.0 V8 | CAD 3D & Usinagem CNC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep-blue: #060d1b;
+            --bg-card-blue: #0f1c3f;
+            --bg-card-hover: #162858;
+            --blue-primary: #0066ff;
+            --blue-electric: #00d2ff;
+            --blue-glow: rgba(0, 210, 255, 0.3);
+            --text-main: #f0f6fc;
+            --text-muted: #94a3b8;
+            --border-blue: #1e3a70;
+            --gradient-hero: linear-gradient(135deg, #060d1b 0%, #0a1b3a 50%, #002255 100%);
+            --gradient-btn: linear-gradient(135deg, #0052cc, #00d2ff);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep-blue);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER & NAVEGAÇÃO */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(6, 13, 27, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-blue);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--blue-electric);
+            text-shadow: 0 0 12px var(--blue-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue-electric);
+        }
+
+        .btn {
+            background: var(--gradient-btn);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--blue-glow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
+        }
+
+        /* ETAPA 1: HERO SECTION */
+        .hero {
+            padding: 160px 0 100px;
+            background: var(--gradient-hero);
+            position: relative;
+            border-bottom: 1px solid var(--border-blue);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--blue-electric);
+            border: 1px solid var(--blue-electric);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3.1rem;
+            line-height: 1.15;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #b0c4de 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 620px;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-blue);
+            box-shadow: 0 0 40px rgba(0, 102, 255, 0.25);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* TITULOS DE SEÇÃO */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--blue-electric);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+        }
+
+        /* ETAPA 2: QUEM SOMOS */
+        .about {
+            padding: 100px 0;
+            background: #081329;
+            border-bottom: 1px solid var(--border-blue);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-blue);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .entrepreneur-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .entrepreneur-item {
+            background: var(--bg-card-blue);
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid var(--blue-electric);
+        }
+
+        .entrepreneur-item h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .entrepreneur-item p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        /* ETAPA 3: SOLUÇÕES / SERVIÇOS MECATRÔNICOS */
+        .services {
+            padding: 100px 0;
+            background: var(--bg-deep-blue);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card-blue);
+            border: 1px solid var(--border-blue);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            border-color: var(--blue-electric);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.08);
+        }
+
+        .service-content {
+            padding: 24px;
+        }
+
+        .service-content h3 {
+            color: var(--blue-electric);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .service-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ETAPA 4: DIFERENCIAL / INOVAÇÃO 5.0 V8 */
+        .differential {
+            padding: 90px 0;
+            background: linear-gradient(180deg, #0a1b3a 0%, #060d1b 100%);
+            border-top: 1px solid var(--border-blue);
+            border-bottom: 1px solid var(--border-blue);
+        }
+
+        .diff-box {
+            background: var(--bg-card-blue);
+            border: 1px solid var(--blue-electric);
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 0 50px rgba(0, 102, 255, 0.15);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .diff-text h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .diff-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
+
+        .diff-highlights {
+            list-style: none;
+        }
+
+        .diff-highlights li {
+            position: relative;
+            padding-left: 28px;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .diff-highlights li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: var(--blue-electric);
+        }
+
+        .diff-img {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-blue);
+        }
+
+        .diff-img img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        /* ETAPA 5: FORMULÁRIO DE CONTATO / LEADS */
+        .contact {
+            padding: 100px 0;
+            background: var(--bg-deep-blue);
+        }
+
+        .form-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card-blue);
+            border: 1px solid var(--border-blue);
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background: #060d1b;
+            border: 1px solid var(--border-blue);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--blue-electric);
+            box-shadow: 0 0 10px var(--blue-glow);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background: #030813;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-blue);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 992px) {
+            .hero-grid, .about-grid, .diff-box {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2.4rem; }
+            .nav-links { display: none; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">⚡ THE FALCON <span>MECHATRONICS 5.0 V8</span></div>
+                <ul class="nav-links">
+                    <li><a href="#about">Quem Somos</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#differential">Inovação V8</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                <a href="#contact" class="btn">Solicitar Orçamento de Automação</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <span class="hero-badge">TECNOLOGIA DE PONTA 5.0 V8</span>
+                    <h1>The Falcon Mechatronics 5.0 V8</h1>
+                    <p>Projetos CAD 3D de alta complexidade e Prototipagem/Usinagem CNC Sob Medida. Acelere seu ciclo industrial com engenharia de alto desempenho.</p>
+                    <a href="#contact" class="btn">Solicite um Orçamento de Automação V8</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80" alt="Automação Industrial V8 e Usinagem CNC">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80" alt="Equipe de Engenharia The Falcon">
+                </div>
+                <div class="about-text">
+                    <span class="section-subtitle">QUEM SOMOS</span>
+                    <h2 class="section-title">Perfil de Engenharia & Visão Empreendedora</h2>
+                    <p>A <strong>The Falcon Mechatronics 5.0 V8</strong> é uma startup de engenharia de elite especializada em acelerar a manufatura avançada e a criação de dispositivos industriais inteligentes.</p>
+                    <p>Nossa equipe une rigor científico, velocidade operacional e atitudes empreendedoras de alto impacto para transformar desafios fabris complexos em soluções físicas de alta performance.</p>
+                    
+                    <div class="entrepreneur-list">
+                        <div class="entrepreneur-item">
+                            <h4>Agilidade Lean</h4>
+                            <p>Prototipagem ultrarrápida com foco na eliminação de prazos ociosos.</p>
+                        </div>
+                        <div class="entrepreneur-item">
+                            <h4>Rigor Científico</h4>
+                            <p>Análises virtuais e simulações avançadas com tolerância micrométrica.</p>
+                        </div>
+                        <div class="entrepreneur-item">
+                            <h4>Foco no Cliente</h4>
+                            <p>Projetos sob medida focados no ROI imediato para a indústria.</p>
+                        </div>
+                        <div class="entrepreneur-item">
+                            <h4>Cultura 5.0</h4>
+                            <p>Integração de hardware, software e inteligência computacional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">CAPACIDADES TÉCNICAS</span>
+                <h2 class="section-title">Soluções Mecatrônicas Integradas</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80" alt="Projetos CAD 3D">
+                    </div>
+                    <div class="service-content">
+                        <h3>Projetos em CAD 3D / CAE</h3>
+                        <p>Modelagem paramétrica avançada, otimização topológica e análise estrutural de elementos finitos (FEA) para validação digital antes da usinagem.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" alt="Usinagem CNC Sob Medida">
+                    </div>
+                    <div class="service-content">
+                        <h3>Usinagem CNC Sob Medida</h3>
+                        <p>Fresamento e torneamento de ultraprecisão para peças metálicas complexas e polímeros especiais, garantindo alinhamento V8 e repetibilidade.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Eletrônica Dedicada">
+                    </div>
+                    <div class="service-content">
+                        <h3>Eletrônica Dedicada</h3>
+                        <p>Desenvolvimento completo de PCBs (Placas de Circuito Impresso) e integração de sistemas embarcados e sensores para ambientes severos.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Programação de CLP">
+                    </div>
+                    <div class="service-content">
+                        <h3>Programação de CLP & IHM</h3>
+                        <p>Automação de células de trabalho, arquitetura de sistemas industriais e interface homem-máquina para redução drástica do tempo de ciclo.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Visão Computacional">
+                    </div>
+                    <div class="service-content">
+                        <h3>Visão Computacional</h3>
+                        <p>Sistemas de inspeção óptica automatizada por IA para controle de qualidade em tempo real e detecção imediata de inconformidades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="differential" id="differential">
+        <div class="container">
+            <div class="diff-box">
+                <div class="diff-text">
+                    <span class="section-subtitle">DIFERENCIAL & EFICIÊNCIA 5.0</span>
+                    <h3>Zero Desperdício. Máxima Performance V8.</h3>
+                    <p>A The Falcon elimina desperdícios operacionais integrando o ciclo completo de projeto e manufatura em um ecossistema digital unificado.</p>
+                    <ul class="diff-highlights">
+                        <li><strong>Otimização Topológica:</strong> Redução de até 40% do peso do componente mantendo a resistência estrutural.</li>
+                        <li><strong>Validação Virtual Simulada:</strong> Testes em ambiente CAE que reduzem o refugo físico a zero.</li>
+                        <li><strong>Integração Cad-to-CNC Inteligente:</strong> Comunicação direta entre modelo 3D e usinagem CNC sem intermediários.</li>
+                    </ul>
+                </div>
+                <div class="diff-img">
+                    <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=600&q=80" alt="Eficiência na Indústria 5.0">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">MAPEAMENTO INICIAL DE POTENCIAIS CLIENTES</span>
+                <h2 class="section-title">Solicite seu Projeto ou Orçamento V8</h2>
+            </div>
+
+            <div class="form-wrapper">
+                <form action="#" method="POST">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo e Cargo *</label>
+                            <input type="text" id="nome" placeholder="Ex: Eng. Roberto Santos - Gerente Industrial" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="empresa">Empresa / CNPJ *</label>
+                            <input type="text" id="empresa" placeholder="Razão Social ou CNPJ" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail Corporativo *</label>
+                            <input type="email" id="email" placeholder="nome@empresa.com.br" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="whatsapp">WhatsApp / Telefone *</label>
+                            <input type="tel" id="whatsapp" placeholder="(11) 99999-9999" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="servico">Capacidade Técnica Requerida *</label>
+                            <select id="servico" required>
+                                <option value="">Selecione uma opção...</option>
+                                <option value="cad">Projetos em CAD 3D / CAE</option>
+                                <option value="cnc">Prototipagem / Usinagem CNC Sob Medida</option>
+                                <option value="eletronica">Eletrônica Dedicada & PCBs</option>
+                                <option value="clp">Programação de CLP & Automação</option>
+                                <option value="visao">Visão Computacional</option>
+                                <option value="completo">Solução Mecatrônica Completa V8</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="estagio">Estágio do Projeto *</label>
+                            <select id="estagio" required>
+                                <option value="">Selecione o estágio...</option>
+                                <option value="conceito">Apenas Conceito / Ideia</option>
+                                <option value="desenho">Possuo Desenho 3D (.STEP / .IGES)</option>
+                                <option value="reversa">Necessita Engenharia Reversa (Peça Física)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="arquivo">Anexar Desenho Técnico ou Especificação (.STEP, .PDF, .ZIP)</label>
+                            <input type="file" id="arquivo">
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="descricao">Descrição das Necessidades & Tolerâncias</label>
+                            <textarea id="descricao" placeholder="Detalhe materiais (ex: Alumínio 7075, Aço Inox, POM), tolerâncias dimensionais, prazos e expectativas..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; text-align: center; margin-top: 10px; font-size: 1.05rem;">
+                        Enviar Mapeamento de Projeto V8
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 The Falcon Mechatronics 5.0 V8. Todos os direitos reservados. Projetos CAD 3D & Usinagem CNC de Alta Precisão.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
